@@ -10,7 +10,7 @@ export default function Navbar() {
                         <span className="navbar-toggler-icon"></span>
                     </button>
 
-                    <button type="button" className="btn btn-outline-light">Add New Exercise</button>
+                    <button className="btn btn-outline-light">Dodaj novu vježbu</button>
                 </div>
             </nav>
         </div>
