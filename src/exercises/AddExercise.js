@@ -1,6 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function AddExercise() {
+
+  const[exercise, setExercise] = useState({
+    name:"",
+    bodyPart:"",
+    numberOfSets:"",
+    numberOfReps:"",
+    weight:""
+  })
+
+  const{name, bodyPart, numberOfSets, numberOfReps, weight}=exercise
+
+  const onInputChange = (event) => {
+    setExercise({...exercise,[event.target.name]:event.target.value})
+  }
+
   return (
     <div className="container">
       <div className="row">
@@ -8,23 +23,23 @@ export default function AddExercise() {
           <h2 className="text-center m-4">Informacije o novoj vježbi</h2>
           <div className="mb-4">
             <label htmlFor="ImeNoveVjezbe" className="form-label">Ime vježbe:</label>
-            <input type={"text"} className="form-control" placeholder="Unesite ime nove vježbe" name="ImeNoveVjezbe"/>
+            <input type={"text"} className="form-control" placeholder="Unesite ime nove vježbe" name="name" value={name} onChange={(event) => onInputChange(event)}/>
           </div>
           <div className="mb-4">
             <label htmlFor="MisicinaSkupina" className="form-label">Mišićna skupina:</label>
-            <input type={"text"} className="form-control" placeholder="Unesite mišićnu skupinu koju pogađa" name="MisicinaSkupina"/>
+            <input type={"text"} className="form-control" placeholder="Unesite mišićnu skupinu koju pogađa" name="bodyPart" value={bodyPart} onChange={(event) => onInputChange(event)}/>
           </div>
           <div className="mb-4">
             <label htmlFor="BrojSerija" className="form-label">Broj serija:</label>
-            <input type={"text"} className="form-control" placeholder="Unesite broj serija" name="BrojSerija"/>
+            <input type={"text"} className="form-control" placeholder="Unesite broj serija" name="numberOfSets" value={numberOfSets} onChange={(event) => onInputChange(event)}/>
           </div>
           <div className="mb-4">
             <label htmlFor="BrojPonavljanja" className="form-label">Broj ponavljanja:</label>
-            <input type={"text"} className="form-control" placeholder="Unesite broj ponavljanja" name="BrojPonavljanja"/>
-          </div>
+            <input type={"text"} className="form-control" placeholder="Unesite broj ponavljanja" name="numberOfReps" value={numberOfReps} onChange={(event) => onInputChange(event)}/>
+          </div> 
           <div className="mb-4">
             <label htmlFor="RadnaKilaža" className="form-label">Radna kilaža:</label>
-            <input type={"text"} className="form-control" placeholder="Unesite radnu kilažu" name="RadnaKilaža"/>
+            <input type={"text"} className="form-control" placeholder="Unesite radnu kilažu" name="weight" value={weight} onChange={(event) => onInputChange(event)}/>
           </div>
           <button type="submit" className="btn btn-dark">Unesi</button>
           <button type="submit" className="btn btn-dark mx-2">Odustani</button>
