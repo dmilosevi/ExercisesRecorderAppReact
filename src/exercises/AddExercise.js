@@ -1,7 +1,10 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function AddExercise() {
+
+  let navigate = useNavigate()
 
   const[exercise, setExercise] = useState({
     name:"",
@@ -20,6 +23,7 @@ export default function AddExercise() {
   const onSubmit = async (event) => {
     event.preventDefault();
     await axios.post("http://localhost:8080/exercises/add", exercise)
+    navigate("/")
   }
 
   return (
@@ -50,7 +54,7 @@ export default function AddExercise() {
               <input type={"text"} className="form-control" placeholder="Unesite radnu kilažu" name="weight" value={weight} onChange={(event) => onInputChange(event)}/>
             </div>
             <button type="submit" className="btn btn-dark">Unesi</button>
-            <button type="submit" className="btn btn-dark mx-2">Odustani</button>
+            <Link className="btn btn-dark mx-2" to="/">Odustani</Link>
           </form>
 
         </div>
