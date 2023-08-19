@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AddExercise from './exercises/AddExercise';
 import EditExercise from './exercises/EditExercise';
+import ViewExercise from './exercises/ViewExercise';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact path='/' element={<Home/>}/>
           <Route exact path='/add' element={<AddExercise/>}/>
           <Route exact path='/update/:id' element={<EditExercise/>}/>
+          <Route exact path='/viewexercise/:id' element={<ViewExercise/>}/>
         </Routes>
 
       </Router>

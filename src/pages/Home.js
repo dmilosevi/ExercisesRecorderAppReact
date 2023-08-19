@@ -49,7 +49,7 @@ export default function Home() {
                                     <td>{exercise.numberOfReps}</td>
                                     <td>{exercise.weight}</td>
                                     <td>
-                                        <button className="btn btn-dark mx-2">Pregled</button>
+                                        <Link className="btn btn-dark mx-2" to={`/viewexercise/${exercise.id}`}>Pregled</Link>
                                         <Link className="btn btn-dark mx-2" to={`/update/${exercise.id}`}>Uredi</Link>
                                         <button className="btn btn-dark mx-2" onClick={() => deleteExercise(exercise.id)}>Izbriši</button>
                                     </td>
