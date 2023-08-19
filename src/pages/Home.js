@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link, useParams } from 'react-router-dom';
 
 export default function Home() {
 
     const[exercises,setExercises] = useState([])
+
+    const {id} = useParams()
 
     useEffect(()=>{
         loadExercises();
@@ -12,6 +15,11 @@ export default function Home() {
     const loadExercises= async () => {
         const result = await axios.get("http://localhost:8080/exercises/all");
         setExercises(result.data);
+    }
+
+    const deleteExercise = async (id) => {
+        await axios.delete(`http://localhost:8080/exercises/delete/${id}`)
+        loadExercises()
     }
 
     return (
@@ -42,8 +50,8 @@ export default function Home() {
                                     <td>{exercise.weight}</td>
                                     <td>
                                         <button className="btn btn-dark mx-2">Pregled</button>
-                                        <button className="btn btn-dark mx-2">Uredi</button>
-                                        <button className="btn btn-dark mx-2">Izbriši</button>
+                                        <Link className="btn btn-dark mx-2" to={`/update/${exercise.id}`}>Uredi</Link>
+                                        <button className="btn btn-dark mx-2" onClick={() => deleteExercise(exercise.id)}>Izbriši</button>
                                     </td>
                                 </tr>
                             ))
